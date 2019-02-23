@@ -3,5 +3,6 @@ package com.mutlu.turgay.kotlincleanarchitecturesample.base
 import androidx.lifecycle.ViewModel
 
 
-class BaseViewModel: ViewModel() {
+abstract class BaseViewModel: ViewModel() {
+    val Tag = javaClass.simpleName
 }
