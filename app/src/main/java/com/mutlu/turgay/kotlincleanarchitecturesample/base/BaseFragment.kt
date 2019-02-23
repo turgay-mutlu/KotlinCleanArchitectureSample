@@ -8,11 +8,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.OnRebindCallback
 import androidx.databinding.ViewDataBinding
-import androidx.databinding.library.baseAdapters.BR
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProviders
+import com.mutlu.turgay.kotlincleanarchitecturesample.BR
 
 
 abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding> : Fragment() {
