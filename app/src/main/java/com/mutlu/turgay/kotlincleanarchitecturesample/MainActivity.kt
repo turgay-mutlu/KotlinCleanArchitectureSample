@@ -11,6 +11,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        loadFragment(binding.container.id,SplashFragment.newInstance(),false)
+        if(savedInstanceState==null){
+            loadFragment(binding.container.id,SplashFragment.newInstance(),false)
+        }
     }
 }
