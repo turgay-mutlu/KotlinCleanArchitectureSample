@@ -1,8 +1,6 @@
 package com.mutlu.turgay.kotlincleanarchitecturesample.ui.discover
 
-import androidx.databinding.Observable
 import androidx.databinding.ObservableBoolean
-import androidx.databinding.ObservableField
 import com.mutlu.turgay.kotlincleanarchitecturesample.base.BaseViewModel
 import com.mutlu.turgay.kotlincleanarchitecturesample.model.Discover
 import com.mutlu.turgay.kotlincleanarchitecturesample.model.Movie
@@ -17,7 +15,6 @@ class DiscoverVM: BaseViewModel() {
     val movieList = ArrayList<Movie>()
     val isLoading = ObservableBoolean(false)
     val isError = ObservableBoolean(false)
-    val movieNames = ObservableField<String>()
     private var currentPage = 0
 
     init {
@@ -25,7 +22,7 @@ class DiscoverVM: BaseViewModel() {
         addMovies()
     }
 
-    private fun addMovies(){
+    fun addMovies(){
         currentPage++
         discoverRepository.discoverMovies(currentPage,object : Callback<Discover> {
             override fun onFailure(call: Call<Discover>, t: Throwable) {

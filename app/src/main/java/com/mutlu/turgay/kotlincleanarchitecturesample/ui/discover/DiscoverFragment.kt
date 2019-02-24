@@ -3,10 +3,9 @@ package com.mutlu.turgay.kotlincleanarchitecturesample.ui.discover
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.databinding.Observable
-import androidx.databinding.ObservableField
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 import com.mutlu.turgay.kotlincleanarchitecturesample.R
 import com.mutlu.turgay.kotlincleanarchitecturesample.base.BaseFragment
@@ -31,12 +30,23 @@ class DiscoverFragment : BaseFragment<DiscoverVM, FragmentDiscoverBinding>() {
                 }
             })
         )
-
         viewModel.isLoading.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback(){
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
                 adapter.notifyDataSetChanged()
             }
         })
+        binding.rvMovies.addOnScrollListener(object : RecyclerView.OnScrollListener(){
+            override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                super.onScrollStateChanged(recyclerView, newState)
+
+                if(!recyclerView.canScrollVertically(1)){
+                    viewModel.isLoading.set(true)
+                    viewModel.addMovies()
+
+                }
+            }
+        })
+
 
         binding.rvMovies.adapter = adapter
     }

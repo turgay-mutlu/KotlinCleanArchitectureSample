@@ -9,12 +9,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ui.discover.DiscoverFragment">
+            tools:context=".ui.discover.DiscoverFragment"
+    >
 
         <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvMovies"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:overScrollMode="ifContentScrolls"
+                android:scrollbars="vertical"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintEnd_toStartOf="parent"
                 />
 
         <ProgressBar
@@ -24,6 +30,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rvMovies"
+                app:layout_constraintBottom_toBottomOf="parent"
                 android:visibility="@{vm.isLoading()? View.VISIBLE : View.GONE, default = visible}"
         />
 
