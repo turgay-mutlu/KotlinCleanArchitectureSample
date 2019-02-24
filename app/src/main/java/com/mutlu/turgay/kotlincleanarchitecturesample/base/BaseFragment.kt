@@ -43,12 +43,12 @@ abstract class BaseFragment<VM : ViewModel, DB : ViewDataBinding> : Fragment() {
         return binding.root
     }
 
-    fun loadFragment(containerId: Int, fragment: Fragment, fragmentManager: FragmentManager, addToBackStack:Boolean){
-        val transaction = fragmentManager.beginTransaction()
+    fun loadFragment(containerId: Int, fragment: Fragment, fragmentManager: FragmentManager?, addToBackStack:Boolean){
+        val transaction = fragmentManager?.beginTransaction()
         if(addToBackStack){
-            transaction.addToBackStack("")
+            transaction?.addToBackStack("")
         }
-        transaction.replace(containerId,fragment)
-        transaction.commit()
+        transaction?.replace(containerId,fragment)
+        transaction?.commit()
     }
 }

@@ -26,44 +26,62 @@ android {
     dataBinding {
         enabled = true
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //Core androidx
-    implementation 'androidx.core:core-ktx:1.0.1'
+    implementation 'androidx.core:core-ktx:1.1.0-alpha04'
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    implementation 'androidx.cardview:cardview:1.0.0'
 
     // ViewModel and LiveData
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0-alpha1'
-    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version" // use kapt for Kotlin
+    kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
+
+    // use kapt for Kotlin
 
     //Room
     implementation "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version" // use kapt for Kotlin
+    kapt "androidx.room:room-compiler:$room_version"
+
+    // use kapt for Kotlin
+
     // optional - RxJava support for Room
     implementation "androidx.room:room-rxjava2:$room_version"
+
     // Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
 
     //Rx
-    implementation "io.reactivex.rxjava2:rxjava:2.2.2"
-    implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
-    implementation "io.reactivex.rxjava2:rxkotlin:2.3.0"
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.2'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.3.0'
 
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
 
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+
+    //OkHttp
+    implementation "com.squareup.okhttp3:logging-interceptor:$ok_http_version"
+    implementation "com.squareup.okhttp3:okhttp:$ok_http_version"
+    implementation "com.squareup.okhttp3:okhttp-urlconnection:$ok_http_version"
+
     //Koin
     implementation "org.koin:koin-android-viewmodel:$koin_version"
-
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.1.2-alpha01'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.2-alpha01'
