@@ -12,6 +12,7 @@ import com.mutlu.turgay.kotlincleanarchitecturesample.R
 import com.mutlu.turgay.kotlincleanarchitecturesample.base.BaseFragment
 import com.mutlu.turgay.kotlincleanarchitecturesample.databinding.FragmentDiscoverBinding
 import com.mutlu.turgay.kotlincleanarchitecturesample.model.Movie
+import com.mutlu.turgay.kotlincleanarchitecturesample.ui.movie.MovieFragment
 
 
 class DiscoverFragment : BaseFragment<DiscoverVM, FragmentDiscoverBinding>() {
@@ -26,7 +27,7 @@ class DiscoverFragment : BaseFragment<DiscoverVM, FragmentDiscoverBinding>() {
         binding.rvMovies.layoutManager = LinearLayoutManager(this.context)
         val adapter = RvMovieAdapter(viewModel.movieList, RvMovieAdapter.OnClickListenerDataBinding(object : RvMovieAdapter.ClickListener{
                 override fun onItemClick(movie: Movie, clickedView: View) {
-                    Toast.makeText(context,"HELLO" + movie.title, Toast.LENGTH_SHORT).show()
+                    loadFragment(R.id.container,MovieFragment.newInstance(movie),fragmentManager,true)
                 }
             })
         )

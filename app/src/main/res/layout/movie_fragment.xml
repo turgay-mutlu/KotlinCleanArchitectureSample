@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable name="vm" type="com.mutlu.turgay.kotlincleanarchitecturesample.ui.movie.MovieVM" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivPoster"
+                android:layout_width="150dp"
+                android:layout_height="200dp"
+                android:layout_margin="@dimen/normal_margin"
+                app:imageUrl="@{vm.movie.get().posterPath}"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+        />
+
+        <TextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/normal_margin"
+                android:maxWidth="150dp"
+                android:singleLine="false"
+                android:maxLines="5"
+                android:textSize="20sp"
+                android:text="@{vm.movie.get().title}"
+                tools:text="Name"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/ivPoster"
+        />
+
+        <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/normal_margin"
+                android:textSize="15sp"
+                android:text="@{vm.movie.get().releaseDate}"
+                tools:text="Date"
+                app:layout_constraintTop_toBottomOf="@id/tvName"
+                app:layout_constraintStart_toEndOf="@id/ivPoster"
+        />
+
+        <TextView
+                android:id="@+id/tvLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/normal_margin"
+                android:text="@{vm.movie.get().originalLanguage}"
+                tools:text="Language"
+                app:layout_constraintTop_toBottomOf="@id/tvDate"
+                app:layout_constraintStart_toEndOf="@id/ivPoster"
+        />
+
+        <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/normal_margin"
+                android:padding="@dimen/normal_margin"
+                android:textSize="25sp"
+                android:text="@{vm.movie.get().voteAverage + ``}"
+                tools:text="Score"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/tvOverview"
+        />
+
+        <TextView
+                android:id="@+id/tvOverview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/normal_margin"
+                android:text="@{vm.movie.get().overview}"
+                android:padding="@dimen/normal_margin"
+                android:textSize="15sp"
+                tools:text="asdasdasdasfagdjjklalsdkjlasjklsadksadkddddddddddddddddddddddddasdasdasdsadasdasdasdasdasdasdasdasdasdasdsadasdasd"
+                app:layout_constraintTop_toBottomOf="@id/ivPoster"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+        />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,10 +1,11 @@
 package com.mutlu.turgay.kotlincleanarchitecturesample.model
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
-import com.squareup.moshi.Json
+import kotlinx.android.parcel.Parcelize
 
-
-class Movie(
+@Parcelize
+data class Movie(
     @SerializedName("vote_count")
     val voteCount: Int,
     @SerializedName("id")
@@ -33,4 +34,4 @@ class Movie(
     val overview: String,
     @SerializedName("release_date")
     val releaseDate: String
-)
+) : Parcelable
