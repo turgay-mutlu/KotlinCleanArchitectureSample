@@ -24,11 +24,12 @@ class DiscoverFragment : BaseFragment<DiscoverVM, FragmentDiscoverBinding>() {
 
         binding.rvMovies.setHasFixedSize(true)
         binding.rvMovies.layoutManager = LinearLayoutManager(this.context)
-        val adapter = RvMovieAdapter(viewModel.movieList, object : RvMovieAdapter.ClickListener{
-            override fun onItemClick(clickedView: View, movie: Movie) {
-                Toast.makeText(context,"Hello" + movie.title,Toast.LENGTH_SHORT).show()
-            }
-        })
+        val adapter = RvMovieAdapter(viewModel.movieList, RvMovieAdapter.OnClickListenerDataBinding(object : RvMovieAdapter.ClickListener{
+                override fun onItemClick(movie: Movie, clickedView: View) {
+                    Toast.makeText(context,"HELLO" + movie.title, Toast.LENGTH_SHORT).show()
+                }
+            })
+        )
 
         viewModel.isLoading.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback(){
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
